@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Grades</title>
+
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+        }
+
+        /* Loader */
+        .loader {
+            display: none;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #00ffcc;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loadingText {
+            display: none;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+
+        #prankMsg {
+            display: none;
+            font-size: 35px;
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Check Your Grades</h1>
+    <button id="btn">View Results</button>
+
+    <div class="loader" id="loader"></div>
+    <div id="loadingText">Fetching your grades...</div>
+
+    <div id="prankMsg">😂 APRIL FOOL! No grades here! 😂</div>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const loader = document.getElementById("loader");
+        const loadingText = document.getElementById("loadingText");
+        const prankMsg = document.getElementById("prankMsg");
+
+        btn.addEventListener("click", () => {
+            btn.style.display = "none";
+
+            // Show loader
+            loader.style.display = "block";
+            loadingText.style.display = "block";
+
+            // Fake delay → prank
+            setTimeout(() => {
+                loader.style.display = "none";
+                loadingText.style.display = "none";
+                prankMsg.style.display = "block";
+
+                alert("😂 APRIL FOOL! Better luck next time!");
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
